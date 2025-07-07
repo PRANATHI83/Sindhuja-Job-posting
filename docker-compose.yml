@@ -5,11 +5,11 @@ services:
     image: postgres
     container_name: postgres-job-posting
     ports:
-      - "5434:5432"
+      - "5206:5432"
     environment:
       POSTGRES_DB: job_portal
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin234
+      POSTGRES_PASSWORD: admin123
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -20,7 +20,7 @@ services:
     build: ./Backend
     container_name: backend-job-posting
     ports:
-      - "3003:3003"
+      - "3206:3206"
     depends_on:
       - postgres
     networks:
@@ -30,7 +30,7 @@ services:
     build: ./Employee-posting
     container_name: employee-posting-ui
     ports:
-      - "8003:80"
+      - "8011:80"
     depends_on:
       - backend
     networks:
@@ -40,7 +40,7 @@ services:
     build: ./HR-posting
     container_name: hr-posting-ui
     ports:
-      - "8004:80"
+      - "8012:80"
     depends_on:
       - backend
     networks:
